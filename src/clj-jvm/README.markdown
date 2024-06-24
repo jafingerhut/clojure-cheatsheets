@@ -15,11 +15,14 @@ documentation on either [clojure.github.com][clojure github] or
 
 # Installation
 
-## For Ubuntu 18.04 or 20.04 Linux
+## For Ubuntu Linux
 
-Starting from a minimal Ubuntu 18.04 or 20.04 Linux installation, here
-is what you need to install in order to run the cheatsheet generator.
+Starting from a minimal Ubuntu Linux installation of a supported
+version, here is what you need to install in order to run the
+cheatsheet generator.
 
++ Versions of Ubuntu Linux on which this has been tested:
+  + 18.04, 20.04, 22.04, 24.04
 + Some version of the JDK, e.g. OpenJDK 11 can be installed via the
   command: `sudo apt-get install default-jdk`
 + Leiningen.  The `lein` bash script available from
