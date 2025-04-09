@@ -7,15 +7,15 @@
 (def ^:dynamic *auto-flush* true)
 
 ;; The list below was created by starting with the list of all
-;; namespaces in a Clojure 1.10.0-RC1 run, with no dependencies other
+;; namespaces in a Clojure 1.12.0 run, with no dependencies other
 ;; than the spec ones that Clojure needs to run, using these commands:
 
-;; $ clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.10.0-RC1"}}}'
-;; Clojure 1.10.0-RC1
+;; $ clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.12.0"}}}'
+;; Clojure 1.12.0
 ;; user=> (pprint (->> (all-ns) (map str) sort))
 
 ;; That list was then augmented by grep'ing all .clj files in the
-;; Clojure 1.10.0-RC2 source code for 'ns' forms.  Not all namespaces
+;; Clojure 1.12.0 source code for 'ns' forms.  Not all namespaces
 ;; included in Clojure are loaded by default using the commands above.
 
 ;; See also +common-namespaces-to-remove-from-shown-symbols+
@@ -31,10 +31,13 @@
     clojure.edn
     clojure.inspector
     clojure.instant
+    clojure.java.basis
+    clojure.java.basis.impl
     clojure.java.browse
     clojure.java.browse-ui
     clojure.java.io
     clojure.java.javadoc
+    clojure.java.process
     clojure.java.shell
     clojure.main
     clojure.math
@@ -42,6 +45,7 @@
     clojure.pprint
     clojure.reflect
     clojure.repl
+    clojure.repl.deps
     clojure.set
     clojure.stacktrace
     clojure.string
@@ -49,6 +53,7 @@
     clojure.test
     clojure.test.junit
     clojure.test.tap
+    clojure.tools.deps.interop
     clojure.uuid
     clojure.walk
     clojure.xml

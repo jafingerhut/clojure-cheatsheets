@@ -512,7 +512,8 @@
                       [{:html "'Change'", :latex "`Change'"}
                        :cmds '[conj concat distinct flatten group-by
                                partition partition-all partition-by
-                               split-at split-with filter remove
+                               partitionv partitionv-all
+                               split-at split-with splitv-at filter remove
                                replace shuffle]]
                       ["Rearrange" :cmds '[reverse sort sort-by compare]]
                       ["Process items" :cmds '[map pmap map-indexed
@@ -537,6 +538,7 @@
                        :cmds '[map mapcat filter remove take
                                take-while take-nth drop drop-while
                                replace partition-by partition-all
+                               partitionv-all
                                keep keep-indexed map-indexed distinct
                                interpose cat dedupe random-sample
                                "(1.9)" halt-when]]
