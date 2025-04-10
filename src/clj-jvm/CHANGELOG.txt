@@ -1,4 +1,68 @@
 ---------------------------------------------------------------------
+April 10, 2025 - Clojure 1.9 - 1.12, sheet v56
+
+Made 'minimum version' Clojure 1.9, removing all (1.9) tags marking
+things as new in 1.9.  Tags for things new in (1.10) (1.111) are still
+present, as are tags (1.12) for things new in Clojure 1.12.0.
+
+New things for Clojure 1.12 that have _not_ been added to the sheet at
+this time:
+
+    Considered as implementation details:
+    clojure.core.protocols/iterator-reduce!
+    clojure.java.basis.impl/init-basis
+    clojure.java.basis.impl/the-basis
+    clojure.java.basis.impl/update-basis!
+    clojure.java.process/io-task
+
+    Should these be added?  If so, where?
+    *repl*
+    clojure.java.basis/current-basis
+    clojure.java.basis/initial-basis
+    clojure.tools.deps.interop/invoke-tool
+
+New things for Clojure 1.12 that have been added to the sheet in this
+version:
+
+Added to Sequences / Seq in, Seq out / 'Change' section:
+
+    partitionv partitionv-all splitv-at
+
+Added to Transducers / Off the Shelf section:
+
+    partitionv-all
+
+Added to Other / REPL section:
+
+    clojure.repl.deps/add-lib
+    clojure.repl.deps/add-libs
+    clojure.repl.deps/sync-deps
+
+Added to Other / Browser/Shell section:
+
+    clojure.java.process/exec
+    clojure.java.process/exit-ref
+    clojure.java.process/from-file
+    clojure.java.process/start
+    clojure.java.process/stderr
+    clojure.java.process/stdin
+    clojure.java.process/stdout
+    clojure.java.process/to-file
+
+Removed from Other / Browser/Shell section:
+
+    clojure.java.shell/sh
+    clojure.java.shell/with-sh-dir
+    clojure.java.shell/with-sh-env
+
+Added new Java Interoperation / Streams section containing these:
+
+    stream-into!
+    stream-reduce!
+    stream-seq!
+    stream-transduce!
+
+---------------------------------------------------------------------
 April 19, 2022 - Clojure 1.8 - 1.11, sheet v55
 
 I forgot about the new clojure.math namespace added to Clojure 1.11,

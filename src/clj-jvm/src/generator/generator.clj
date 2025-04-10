@@ -27,9 +27,12 @@
             clojure.edn
             clojure.inspector
             clojure.instant
+            clojure.java.basis
             clojure.java.browse-ui
+            clojure.java.process
             clojure.main
             clojure.math
+            clojure.repl.deps
             clojure.spec.gen.alpha
             clojure.stacktrace
             clojure.template
@@ -135,8 +138,8 @@
 
 
 (def cheatsheet-structure
-     [:title {:latex "Clojure Cheat Sheet (Clojure 1.8 - 1.11, sheet v55)"
-              :html "Clojure Cheat Sheet (Clojure 1.8 - 1.11, sheet v55)"}
+     [:title {:latex "Clojure Cheat Sheet (Clojure 1.9 - 1.12, sheet v56)"
+              :html "Clojure Cheat Sheet (Clojure 1.9 - 1.12, sheet v56)"}
       :page [:column
              [:box "green"
               :section "Documentation"
@@ -201,8 +204,7 @@
                                       bigdec bigint num rationalize biginteger]]
                       ["Test" :cmds '[zero? pos? neg? even? odd? number?
                                       rational? integer? ratio? decimal?
-                                      float?
-                                      "(1.9)" double? int? nat-int?
+                                      float? double? int? nat-int?
                                       neg-int? pos-int?
                                       "(1.11)" NaN? infinite?]]
                       ["Random" :cmds '[rand rand-int
@@ -304,7 +306,8 @@
              [:box "yellow"
               :section "Collections"
               :subsection "Collections"
-              :table [["Generic ops" :cmds '[count empty not-empty into conj
+              :table [["Generic ops" :cmds '[count bounded-count empty
+                                             not-empty into conj
                                              {:latex "\\textmd{\\textsf{(clojure.walk/)}}",
                                               :html "(clojure.walk/)"}
                                              clojure.walk/walk
@@ -314,7 +317,6 @@
                                              clojure.walk/postwalk
                                              clojure.walk/postwalk-demo
                                              clojure.walk/postwalk-replace
-                                             "(1.9)" bounded-count
                                              ]]
                       ["Content tests" :cmds '[distinct? empty?
                                                every? not-every? some not-any?]]
@@ -512,9 +514,9 @@
                       [{:html "'Change'", :latex "`Change'"}
                        :cmds '[conj concat distinct flatten group-by
                                partition partition-all partition-by
-                               partitionv partitionv-all
-                               split-at split-with splitv-at filter remove
-                               replace shuffle]]
+                               split-at split-with filter remove
+                               replace shuffle
+                               "(1.12)" partitionv partitionv-all splitv-at]]
                       ["Rearrange" :cmds '[reverse sort sort-by compare]]
                       ["Process items" :cmds '[map pmap map-indexed
                                               mapcat for replace seque]]]
@@ -538,10 +540,10 @@
                        :cmds '[map mapcat filter remove take
                                take-while take-nth drop drop-while
                                replace partition-by partition-all
-                               partitionv-all
                                keep keep-indexed map-indexed distinct
                                interpose cat dedupe random-sample
-                               "(1.9)" halt-when]]
+                               halt-when
+                               "(1.12)" partitionv-all]]
                       ["Create your own"
                        :cmds '[completing ensure-reduced unreduced
                                {:latex "\\textmd{\\textsf{See also section Concurrency/Volatiles}}",
@@ -633,22 +635,21 @@
               :table [
                       ["Numbers"
                        :cmds '[number? rational? integer? ratio? decimal?
-                               float? zero?
-                               "(1.9)" double? int? nat-int? neg-int? pos-int?]]
+                               float? zero? double? int? nat-int? neg-int?
+                               pos-int?]]
                       [{:latex "\\begin{tabular}[t]{@{}l@{}} Symbols, \\\\ keywords \\end{tabular}"
                         :html "Symbols, keywords"}
-                       :cmds '[keyword? symbol? "(1.9)" ident? qualified-ident?
+                       :cmds '[keyword? symbol? ident? qualified-ident?
                                qualified-keyword? qualified-symbol?
                                simple-ident? simple-keyword? simple-symbol?]]
                       [{:latex "\\begin{tabular}[t]{@{}l@{}} Other \\\\ scalars \\end{tabular}"
                         :html "Other scalars"}
                        :cmds '[string? true? false? nil? some?
-                               "(1.9)" boolean? bytes? inst? uri? uuid?]]
+                               boolean? bytes? inst? uri? uuid?]]
                       ["Collections"
                        :cmds '[list? map? set? vector? associative? coll?
-                               sequential? seq? empty?
-                               "(1.9)" indexed? seqable?]]
-                      ["Other" :cmds '["(1.9)" any?]]]
+                               sequential? seq? empty? indexed? seqable?]]
+                      ["Other" :cmds '[any?]]]
               ]
              [:box "magenta"
               :section "IO"
@@ -1023,7 +1024,7 @@
                                :html "<a href=\"https://clojure.org/reference/reader#map_namespace_syntax\">map namespace syntax</a> e.g. <code>#:foo{:a 1}</code> is equal to <code>{:foo/a 1}</code>"}]]
                       [{:latex "\\cmd{\\#\\#}",
                         :html "<code>##</code>"}
-                       :cmds '["(1.9) symbolic values:"
+                       :cmds '["symbolic values:"
                                {:latex "\\cmd{\\#\\#Inf \\#\\#-Inf \\#\\#NaN}",
                                 :html "<code>##Inf ##-Inf ##NaN<code>"}]]
                       [{:latex "\\cmd{\\$}",
@@ -1176,7 +1177,7 @@
              [:box "magenta"
               :section "Concurrency"
               :table [["Atoms" :cmds '[atom swap! reset! compare-and-set!
-                                       "(1.9)" swap-vals! reset-vals!]]
+                                       swap-vals! reset-vals!]]
                       ["Futures" :cmds '[future
                                          [:common-prefix future-
                                           call done? cancel cancelled?]
@@ -1230,14 +1231,18 @@
                       ["Exceptions" :cmds '[throw try catch finally
                                             clojure.repl/pst ex-info ex-data
                                             Throwable->map
-                                            "(1.9)" StackTraceElement->vec
+                                            StackTraceElement->vec
                                             "(1.10)" ex-cause ex-message
                                             {:latex "\\textmd{\\textsf{(clojure.main/)}}",
                                              :html "(clojure.main/)"}
                                             clojure.main/ex-triage
                                             clojure.main/ex-str
                                             clojure.main/err->msg
-                                            clojure.main/report-error]]]
+                                            clojure.main/report-error]]
+                      ["Streams" :cmds '["(1.12)"
+                                         stream-into! stream-reduce!
+                                         stream-seq! stream-transduce!]]
+                      ]
               :subsection "Arrays"
               :table [["Create" :cmds '[make-array
                                         [:common-suffix -array object
@@ -1289,7 +1294,13 @@
               :table [["XML" :cmds '[clojure.xml/parse xml-seq]]
                       ["REPL" :cmds '[*1 *2 *3 *e *print-dup* *print-length*
                                       *print-level* *print-meta*
-                                      *print-readably*]]
+                                      *print-readably*
+                                      "(1.12)"
+                                      {:latex "\\textmd{\\textsf{(clojure.repl.deps/)}}",
+                                       :html "(clojure.repl.deps/)"}
+                                      clojure.repl.deps/add-lib
+                                      clojure.repl.deps/add-libs
+                                      clojure.repl.deps/sync-deps]]
                       ["Code" :cmds '[*compile-files* *compile-path* *file*
                                       *warn-on-reflection* compile
                                       loaded-libs test]]
@@ -1301,11 +1312,17 @@
                        :cmds '[{:latex "\\textmd{\\textsf{(clojure.java.browse/)}}",
                                 :html "(clojure.java.browse/)"}
                                clojure.java.browse/browse-url
-                               {:latex "\\textmd{\\textsf{(clojure.java.shell/)}}",
-                                :html "(clojure.java.shell/)"}
-                               clojure.java.shell/sh
-                               clojure.java.shell/with-sh-dir
-                               clojure.java.shell/with-sh-env]]]
+                               "(1.12)"
+                               {:latex "\\textmd{\\textsf{(clojure.java.process/)}}",
+                                :html "(clojure.java.process/)"}
+                               clojure.java.process/exec
+                               clojure.java.process/exit-ref
+                               clojure.java.process/from-file
+                               clojure.java.process/start
+                               clojure.java.process/stderr
+                               clojure.java.process/stdin
+                               clojure.java.process/stdout
+                               clojure.java.process/to-file]]]
               ]
 ;             [:footer
 ;               tbd
@@ -1879,11 +1896,13 @@ document.write('<style type=\"text/css\">%s<\\/style>')
    "clojure.java.browse/"
    "clojure.java.io/"
    "clojure.java.javadoc/"
+   "clojure.java.process/"
    "clojure.java.shell/"
    "clojure.main/"
    "clojure.math/"
    "clojure.pprint/"
    "clojure.repl/"
+   "clojure.repl.deps/"
    "clojure.set/"
    "clojure.spec.alpha/"
    "clojure.string/"
