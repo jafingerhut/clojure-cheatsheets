@@ -138,17 +138,29 @@
 
 
 (def cheatsheet-structure
-     [:title {:latex "Clojure Cheat Sheet (Clojure 1.9 - 1.12, sheet v56)"
-              :html "Clojure Cheat Sheet (Clojure 1.9 - 1.12, sheet v56)"}
+     [:title {:latex "Clojure Cheat Sheet (Clojure 1.9 - 1.12, sheet v57)"
+              :html "Clojure Cheat Sheet (Clojure 1.9 - 1.12, sheet v57)"}
       :page [:column
              [:box "green"
-              :section "Documentation"
-              :table [["clojure.repl/"
-                       :cmds '[clojure.repl/doc clojure.repl/find-doc
+              :section "REPL"
+              :table [["Documentation"
+                       :cmds '[{:latex "\\textmd{\\textsf{(clojure.repl/)}}",
+                                :html "(clojure.repl/)"}
+                               clojure.repl/doc clojure.repl/find-doc
                                clojure.repl/apropos clojure.repl/dir
                                clojure.repl/source
                                clojure.repl/pst clojure.java.javadoc/javadoc
-                               "(foo.bar/ is namespace for later syms)"]]]
+                               "(foo.bar/ is namespace for later syms)"]]
+                      ["Add libs"
+                       :cmds '["(1.12)"
+                               {:latex "\\textmd{\\textsf{(clojure.repl.deps/)}}",
+                                :html "(clojure.repl.deps/)"}
+                               clojure.repl.deps/add-lib
+                               clojure.repl.deps/add-libs
+                               clojure.repl.deps/sync-deps]]
+                      ["Other" :cmds '[*1 *2 *3 *e *print-dup* *print-length*
+                                       *print-level* *print-meta*
+                                       *print-readably*]]]
               ]
              [:box "blue"
               :section "Primitives"
@@ -1292,15 +1304,6 @@
              [:box "green2"
               :section "Other"
               :table [["XML" :cmds '[clojure.xml/parse xml-seq]]
-                      ["REPL" :cmds '[*1 *2 *3 *e *print-dup* *print-length*
-                                      *print-level* *print-meta*
-                                      *print-readably*
-                                      "(1.12)"
-                                      {:latex "\\textmd{\\textsf{(clojure.repl.deps/)}}",
-                                       :html "(clojure.repl.deps/)"}
-                                      clojure.repl.deps/add-lib
-                                      clojure.repl.deps/add-libs
-                                      clojure.repl.deps/sync-deps]]
                       ["Code" :cmds '[*compile-files* *compile-path* *file*
                                       *warn-on-reflection* compile
                                       loaded-libs test]]
@@ -1650,7 +1653,7 @@
 
 
 (def latex-a4-header-before-title
-     (str "\\documentclass[footinclude=false,twocolumn,DIV40,fontsize=6.1pt]{scrreprt}\n"
+     (str "\\documentclass[footinclude=false,twocolumn,DIV40,fontsize=6.0pt]{scrreprt}\n"
           latex-header-except-documentclass))
 
 ;; US letter is a little shorter, so formatting gets completely messed

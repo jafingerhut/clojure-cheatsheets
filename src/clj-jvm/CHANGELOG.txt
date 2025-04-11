@@ -1,4 +1,22 @@
 ---------------------------------------------------------------------
+April 11, 2025 - Clojure 1.9 - 1.12, sheet v57
+
+Moved most or all functions focused on REPL development to first
+section.  The first section was renamed from "Documentation" to
+"REPL".  It has sub-sections "Documentation", "Add Libs", and "Other",
+with contents described below.
+
+First sub-section of section "REPL" is REPL / Documentation.  Its
+contents were formerly in a section named Documentation /
+clojure.repl.
+
+Second sub-section of section "REPL" is REPL / Add Libs.  Its contents
+were in a section named REPL / Add libs in the previous version.
+
+Second sub-section of section "REPL" is REPL / Other.  Its contents
+were in a section named Other / REPL in the previous version.
+
+---------------------------------------------------------------------
 April 10, 2025 - Clojure 1.9 - 1.12, sheet v56
 
 Made 'minimum version' Clojure 1.9, removing all (1.9) tags marking
