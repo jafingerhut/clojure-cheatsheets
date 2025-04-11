@@ -11,7 +11,7 @@ contents were formerly in a section named Documentation /
 clojure.repl.
 
 Second sub-section of section "REPL" is REPL / Add Libs.  Its contents
-were in a section named REPL / Add libs in the previous version.
+were in a section named Other / REPL in the previous version.
 
 Second sub-section of section "REPL" is REPL / Other.  Its contents
 were in a section named Other / REPL in the previous version.
