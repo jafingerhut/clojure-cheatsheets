@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------
+September 20, 2025 - Clojure 1.9 - 1.12, sheet v58
+
+Added "clojure.java.javadoc/" string before symbol javadoc so that its
+namespace is visible.
+
+---------------------------------------------------------------------
 April 11, 2025 - Clojure 1.9 - 1.12, sheet v57
 
 Moved most or all functions focused on REPL development to first

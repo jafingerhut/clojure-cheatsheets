@@ -149,7 +149,10 @@
                                clojure.repl/doc clojure.repl/find-doc
                                clojure.repl/apropos clojure.repl/dir
                                clojure.repl/source
-                               clojure.repl/pst clojure.java.javadoc/javadoc
+                               clojure.repl/pst
+                               {:latex "\\textmd{\\textsf{(clojure.java.javadoc/)}}",
+                                :html "(clojure.java.javadoc/)"}
+                               clojure.java.javadoc/javadoc
                                "(foo.bar/ is namespace for later syms)"]]
                       ["Add libs"
                        :cmds '["(1.12)"
